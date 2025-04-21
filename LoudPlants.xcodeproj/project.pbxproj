@@ -195,7 +195,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 80944B7D2DB6B1190090D9EE /* Build configuration list for PBXProject "LaudPlants" */;
+			buildConfigurationList = 80944B7D2DB6B1190090D9EE /* Build configuration list for PBXProject "LoudPlants" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -536,7 +536,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		80944B7D2DB6B1190090D9EE /* Build configuration list for PBXProject "LaudPlants" */ = {
+		80944B7D2DB6B1190090D9EE /* Build configuration list for PBXProject "LoudPlants" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80944BA12DB6B11A0090D9EE /* Debug */,
