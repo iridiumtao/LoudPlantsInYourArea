@@ -15,8 +15,16 @@ struct DemoView: View {
     @State private var showPicker = false
     @State private var showSettings = false
     
+    // Sample plant models
+    private let plantModels = [
+        PlantModel(id: "fern", displayName: "Fern", thumbnailName: "fern_thumb"),
+        PlantModel(id: "succulent", displayName: "Succulent", thumbnailName: "succ_thumb")
+    ]
+    
     var body: some View {
         ZStack {
+            Color.purple
+                .ignoresSafeArea()
 //            ARViewContainer()
 //                .edgesIgnoringSafeArea(.all)
             
@@ -80,12 +88,13 @@ struct DemoView: View {
                 
             }
             // MARK: — Sheets for Picker & Settings
-//            .sheet(isPresented: $showPicker) {
-//                PlantPickerView { selectedModel in
-//                    // TODO: call your placement logic here
-//                    showPicker = false
-//                }
-//            }
+            .sheet(isPresented: $showPicker) {
+                PlantPickerView(plantModels: plantModels) { selected in
+                    showPicker = false
+                }
+                .presentationDetents([.fraction(0.8)])
+                .presentationDragIndicator(.visible)
+            }
             .sheet(isPresented: $showSettings) {
                 SettingsView()
             }
