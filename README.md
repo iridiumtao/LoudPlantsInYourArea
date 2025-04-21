@@ -33,3 +33,8 @@ LoudPlants/
 You (ViewController) are going to school, your mom (Coordinator) wakes you up (init ViewController), prepares your lunch (dependencies/services) and put your homework (dependencies/services) inside your backpack (viewModel). She puts the backpack (viewModel) on your back . And send you off to school.
 
 [MVVM+Coordinators IOS Architecture Tutorial](https://medium.com/nerd-for-tech/mvvm-coordinators-ios-architecture-tutorial-fb27eaa36470)
+
+
+### Reference
+
+[Default Background Image when no AR](https://www.freepik.com/free-photo/indoor-plants-studio_94548503.html)

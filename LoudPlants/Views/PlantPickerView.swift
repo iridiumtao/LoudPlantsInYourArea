@@ -40,7 +40,6 @@ struct PlantPickerView: View {
                 .padding()
             }
         }
-        .background(.ultraThinMaterial)
         .cornerRadius(16)
     }
 }

@@ -23,8 +23,8 @@ struct DemoView: View {
     
     var body: some View {
         ZStack {
-            Color.purple
-                .ignoresSafeArea()
+
+            
 //            ARViewContainer()
 //                .edgesIgnoringSafeArea(.all)
             
@@ -94,6 +94,7 @@ struct DemoView: View {
                 }
                 .presentationDetents([.fraction(0.8)])
                 .presentationDragIndicator(.visible)
+                .presentationBackground(.ultraThinMaterial).ignoresSafeArea()
             }
             .sheet(isPresented: $showSettings) {
                 SettingsView()
@@ -101,6 +102,11 @@ struct DemoView: View {
 
             
         }
+        .background(
+            Image("indoor-plants-studio").resizable()
+            .aspectRatio(contentMode: .fill)
+            .ignoresSafeArea(.all)
+        )
     }
 }
 
