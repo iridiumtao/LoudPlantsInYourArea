@@ -1,6 +1,6 @@
 //
-//  LaudPlantsApp.swift
-//  LaudPlants
+//  LoudPlantsApp.swift
+//  LoudPlants
 //
 //  Created by 歐東 on 4/21/25.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct LaudPlantsApp: App {
+struct LoudPlantsApp: App {
     @StateObject private var plantStore = PlantStore()
     @StateObject private var coordinator = AppCoordinator()
     @State private var showDemo: Bool = false

@@ -29,27 +29,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		80944B822DB6B1190090D9EE /* LaudPlants.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaudPlants.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		80944B8F2DB6B11A0090D9EE /* LaudPlantsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaudPlantsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		80944B992DB6B11A0090D9EE /* LaudPlantsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaudPlantsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80944B822DB6B1190090D9EE /* LoudPlants.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoudPlants.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		80944B8F2DB6B11A0090D9EE /* LoudPlantsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoudPlantsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80944B992DB6B11A0090D9EE /* LoudPlantsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoudPlantsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80944BB02DB6B18C0090D9EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		80944BDC2DB6D0AA0090D9EE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		80944B842DB6B1190090D9EE /* LaudPlants */ = {
+		80944B842DB6B1190090D9EE /* LoudPlants */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LaudPlants;
+			path = LoudPlants;
 			sourceTree = "<group>";
 		};
-		80944B922DB6B11A0090D9EE /* LaudPlantsTests */ = {
+		80944B922DB6B11A0090D9EE /* LoudPlantsTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LaudPlantsTests;
+			path = LoudPlantsTests;
 			sourceTree = "<group>";
 		};
-		80944B9C2DB6B11A0090D9EE /* LaudPlantsUITests */ = {
+		80944B9C2DB6B11A0090D9EE /* LoudPlantsUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LaudPlantsUITests;
+			path = LoudPlantsUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -84,9 +84,9 @@
 			children = (
 				80944BDC2DB6D0AA0090D9EE /* .gitignore */,
 				80944BB02DB6B18C0090D9EE /* README.md */,
-				80944B842DB6B1190090D9EE /* LaudPlants */,
-				80944B922DB6B11A0090D9EE /* LaudPlantsTests */,
-				80944B9C2DB6B11A0090D9EE /* LaudPlantsUITests */,
+				80944B842DB6B1190090D9EE /* LoudPlants */,
+				80944B922DB6B11A0090D9EE /* LoudPlantsTests */,
+				80944B9C2DB6B11A0090D9EE /* LoudPlantsUITests */,
 				80944B832DB6B1190090D9EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,9 +94,9 @@
 		80944B832DB6B1190090D9EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				80944B822DB6B1190090D9EE /* LaudPlants.app */,
-				80944B8F2DB6B11A0090D9EE /* LaudPlantsTests.xctest */,
-				80944B992DB6B11A0090D9EE /* LaudPlantsUITests.xctest */,
+				80944B822DB6B1190090D9EE /* LoudPlants.app */,
+				80944B8F2DB6B11A0090D9EE /* LoudPlantsTests.xctest */,
+				80944B992DB6B11A0090D9EE /* LoudPlantsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,9 +104,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		80944B812DB6B1190090D9EE /* LaudPlants */ = {
+		80944B812DB6B1190090D9EE /* LoudPlants */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80944BA32DB6B11A0090D9EE /* Build configuration list for PBXNativeTarget "LaudPlants" */;
+			buildConfigurationList = 80944BA32DB6B11A0090D9EE /* Build configuration list for PBXNativeTarget "LoudPlants" */;
 			buildPhases = (
 				80944B7E2DB6B1190090D9EE /* Sources */,
 				80944B7F2DB6B1190090D9EE /* Frameworks */,
@@ -117,18 +117,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				80944B842DB6B1190090D9EE /* LaudPlants */,
+				80944B842DB6B1190090D9EE /* LoudPlants */,
 			);
-			name = LaudPlants;
+			name = LoudPlants;
 			packageProductDependencies = (
 			);
 			productName = LaudPlants;
-			productReference = 80944B822DB6B1190090D9EE /* LaudPlants.app */;
+			productReference = 80944B822DB6B1190090D9EE /* LoudPlants.app */;
 			productType = "com.apple.product-type.application";
 		};
-		80944B8E2DB6B11A0090D9EE /* LaudPlantsTests */ = {
+		80944B8E2DB6B11A0090D9EE /* LoudPlantsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80944BA62DB6B11A0090D9EE /* Build configuration list for PBXNativeTarget "LaudPlantsTests" */;
+			buildConfigurationList = 80944BA62DB6B11A0090D9EE /* Build configuration list for PBXNativeTarget "LoudPlantsTests" */;
 			buildPhases = (
 				80944B8B2DB6B11A0090D9EE /* Sources */,
 				80944B8C2DB6B11A0090D9EE /* Frameworks */,
@@ -140,18 +140,18 @@
 				80944B912DB6B11A0090D9EE /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				80944B922DB6B11A0090D9EE /* LaudPlantsTests */,
+				80944B922DB6B11A0090D9EE /* LoudPlantsTests */,
 			);
-			name = LaudPlantsTests;
+			name = LoudPlantsTests;
 			packageProductDependencies = (
 			);
 			productName = LaudPlantsTests;
-			productReference = 80944B8F2DB6B11A0090D9EE /* LaudPlantsTests.xctest */;
+			productReference = 80944B8F2DB6B11A0090D9EE /* LoudPlantsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		80944B982DB6B11A0090D9EE /* LaudPlantsUITests */ = {
+		80944B982DB6B11A0090D9EE /* LoudPlantsUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80944BA92DB6B11A0090D9EE /* Build configuration list for PBXNativeTarget "LaudPlantsUITests" */;
+			buildConfigurationList = 80944BA92DB6B11A0090D9EE /* Build configuration list for PBXNativeTarget "LoudPlantsUITests" */;
 			buildPhases = (
 				80944B952DB6B11A0090D9EE /* Sources */,
 				80944B962DB6B11A0090D9EE /* Frameworks */,
@@ -163,13 +163,13 @@
 				80944B9B2DB6B11A0090D9EE /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				80944B9C2DB6B11A0090D9EE /* LaudPlantsUITests */,
+				80944B9C2DB6B11A0090D9EE /* LoudPlantsUITests */,
 			);
-			name = LaudPlantsUITests;
+			name = LoudPlantsUITests;
 			packageProductDependencies = (
 			);
 			productName = LaudPlantsUITests;
-			productReference = 80944B992DB6B11A0090D9EE /* LaudPlantsUITests.xctest */;
+			productReference = 80944B992DB6B11A0090D9EE /* LoudPlantsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -209,9 +209,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				80944B812DB6B1190090D9EE /* LaudPlants */,
-				80944B8E2DB6B11A0090D9EE /* LaudPlantsTests */,
-				80944B982DB6B11A0090D9EE /* LaudPlantsUITests */,
+				80944B812DB6B1190090D9EE /* LoudPlants */,
+				80944B8E2DB6B11A0090D9EE /* LoudPlantsTests */,
+				80944B982DB6B11A0090D9EE /* LoudPlantsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -269,12 +269,12 @@
 /* Begin PBXTargetDependency section */
 		80944B912DB6B11A0090D9EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 80944B812DB6B1190090D9EE /* LaudPlants */;
+			target = 80944B812DB6B1190090D9EE /* LoudPlants */;
 			targetProxy = 80944B902DB6B11A0090D9EE /* PBXContainerItemProxy */;
 		};
 		80944B9B2DB6B11A0090D9EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 80944B812DB6B1190090D9EE /* LaudPlants */;
+			target = 80944B812DB6B1190090D9EE /* LoudPlants */;
 			targetProxy = 80944B9A2DB6B11A0090D9EE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -476,7 +476,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LaudPlants.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LaudPlants";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoudPlants.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LoudPlants";
 			};
 			name = Debug;
 		};
@@ -495,7 +495,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LaudPlants.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LaudPlants";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoudPlants.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LoudPlants";
 			};
 			name = Release;
 		};
@@ -545,7 +545,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80944BA32DB6B11A0090D9EE /* Build configuration list for PBXNativeTarget "LaudPlants" */ = {
+		80944BA32DB6B11A0090D9EE /* Build configuration list for PBXNativeTarget "LoudPlants" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80944BA42DB6B11A0090D9EE /* Debug */,
@@ -554,7 +554,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80944BA62DB6B11A0090D9EE /* Build configuration list for PBXNativeTarget "LaudPlantsTests" */ = {
+		80944BA62DB6B11A0090D9EE /* Build configuration list for PBXNativeTarget "LoudPlantsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80944BA72DB6B11A0090D9EE /* Debug */,
@@ -563,7 +563,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80944BA92DB6B11A0090D9EE /* Build configuration list for PBXNativeTarget "LaudPlantsUITests" */ = {
+		80944BA92DB6B11A0090D9EE /* Build configuration list for PBXNativeTarget "LoudPlantsUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80944BAA2DB6B11A0090D9EE /* Debug */,

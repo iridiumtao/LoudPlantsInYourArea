@@ -1,13 +1,13 @@
 //
-//  LaudPlantsUITests.swift
-//  LaudPlantsUITests
+//  LoudPlantsUITests.swift
+//  LoudPlantsUITests
 //
 //  Created by 歐東 on 4/21/25.
 //
 
 import XCTest
 
-final class LaudPlantsUITests: XCTestCase {
+final class LoudPlantsUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

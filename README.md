@@ -1,9 +1,9 @@
-#  Laud Plants in Your Area
+#  Loud Plants in Your Area
 
 ## Project Architecture
 
-LaudPlants/
-├─ LaudPlantsApp.swift              # App Entry，Create EnvironmentObjects & NavigationStack
+LoudPlants/
+├─ LoudPlantsApp.swift              # App Entry，Create EnvironmentObjects & NavigationStack
 ├─ AppCoordinator.swift             # 
 │
 ├─ Models/

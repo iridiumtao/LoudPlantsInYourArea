@@ -1,6 +1,6 @@
 //
 //  WelcomeView.swift
-//  LaudPlants
+//  LoudPlants
 //
 //  Created by 歐東 on 4/21/25.
 //
@@ -13,7 +13,7 @@ struct WelcomeView: View {
     
     var body: some View {
         VStack(spacing: 24) {
-            Text("Welcome to Laud Plants")
+            Text("Welcome to Loud Plants")
                 .font(.largeTitle)
             Button {
                 showDemo.toggle()

@@ -1,13 +1,13 @@
 //
-//  LaudPlantsUITestsLaunchTests.swift
-//  LaudPlantsUITests
+//  LoudPlantsUITestsLaunchTests.swift
+//  LoudPlantsUITests
 //
 //  Created by 歐東 on 4/21/25.
 //
 
 import XCTest
 
-final class LaudPlantsUITestsLaunchTests: XCTestCase {
+final class LoudPlantsUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
