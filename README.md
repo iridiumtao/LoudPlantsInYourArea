@@ -1,7 +1,7 @@
 #  Loud Plants in Your Area
 
 ## Project Architecture
-
+```
 LoudPlants/
 ├─ LoudPlantsApp.swift              # App Entry，Create EnvironmentObjects & NavigationStack
 ├─ AppCoordinator.swift             # 
@@ -28,7 +28,7 @@ LoudPlants/
 │
 └─ AR/
     └─ ARViewContainer.swift        # UIViewRepresentable or RealityView, render ARView
-
+```
 ## MVVM Basic
 You (ViewController) are going to school, your mom (Coordinator) wakes you up (init ViewController), prepares your lunch (dependencies/services) and put your homework (dependencies/services) inside your backpack (viewModel). She puts the backpack (viewModel) on your back . And send you off to school.
 
