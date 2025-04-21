@@ -18,7 +18,9 @@ struct DemoView: View {
     // Sample plant models
     private let plantModels = [
         PlantModel(id: "fern", displayName: "Fern", thumbnailName: "fern_thumb"),
-        PlantModel(id: "succulent", displayName: "Succulent", thumbnailName: "succ_thumb")
+        PlantModel(id: "succulent", displayName: "Succulent", thumbnailName: "succ_thumb"),
+        PlantModel(id: "fern2", displayName: "Fern2", thumbnailName: "fern_thumb"),
+        PlantModel(id: "succulent2", displayName: "Succulent2", thumbnailName: "succ_thumb")
     ]
     
     var body: some View {
@@ -88,13 +90,16 @@ struct DemoView: View {
                 
             }
             // MARK: — Sheets for Picker & Settings
-            .sheet(isPresented: $showPicker) {
+            .sheet(
+                isPresented: $showPicker
+            ) {
                 PlantPickerView(plantModels: plantModels) { selected in
                     showPicker = false
                 }
-                .presentationDetents([.fraction(0.8)])
+                .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
                 .presentationBackground(.ultraThinMaterial).ignoresSafeArea()
+                .presentationCompactAdaptation(.sheet)
             }
             .sheet(isPresented: $showSettings) {
                 SettingsView()
