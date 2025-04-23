@@ -11,6 +11,8 @@ import SwiftUI
 struct LoudPlantsApp: App {
     @StateObject private var plantStore = PlantStore()
     @StateObject private var coordinator = AppCoordinator()
+    @StateObject private var arSession = ARSessionManager.shared
+    
     @State private var showDemo: Bool = false
     
     var body: some Scene {
@@ -18,6 +20,7 @@ struct LoudPlantsApp: App {
             WelcomeView(showDemo: $showDemo)
                 .environmentObject(plantStore)
                 .environmentObject(coordinator)
+                .environmentObject(arSession)
                 .fullScreenCover(isPresented: $showDemo) {
                     DemoView()
                         .environmentObject(plantStore)

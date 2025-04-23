@@ -10,6 +10,7 @@ import RealityKit
 
 struct DemoView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var arSession: ARSessionManager
     
     // Local state for showing sheets
     @State private var showPicker = false
@@ -27,8 +28,8 @@ struct DemoView: View {
         ZStack {
 
             
-//            ARViewContainer()
-//                .edgesIgnoringSafeArea(.all)
+            ARViewContainer()
+                .edgesIgnoringSafeArea(.all)
             
             VStack {
                 // MARK: — Top Options
@@ -94,6 +95,7 @@ struct DemoView: View {
                 isPresented: $showPicker
             ) {
                 PlantPickerView(plantModels: plantModels) { selected in
+                    arSession.placeModel(named: selected.id)
                     showPicker = false
                 }
                 .presentationDetents([.medium, .large])
@@ -117,4 +119,7 @@ struct DemoView: View {
 
 #Preview {
     DemoView()
+        .environmentObject(ARSessionManager.shared)
+        .environmentObject(PlantStore())
+        .environmentObject(AppCoordinator())
 }
