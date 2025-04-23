@@ -46,8 +46,8 @@ struct PlantPickerView: View {
 
 struct PlantPickerView_Previews: PreviewProvider {
     static let samples = [
-        PlantModel(id: "fern", displayName: "Fern", thumbnailName: "fern_thumb"),
-        PlantModel(id: "succulent", displayName: "Succulent", thumbnailName: "succ_thumb"),
+        PlantModel(id: "fern", displayName: "Fern", modelName: "String", thumbnailName: "fern_thumb"),
+        PlantModel(id: "succulent", displayName: "Succulent", modelName: "String", thumbnailName: "succ_thumb"),
     ]
 
     static var previews: some View {

@@ -44,7 +44,7 @@ final class ARSessionManager: ObservableObject {
             // let plantEntity = try Entity.load(named: modelName)
             
             // For USDZ models use:
-            let plantEntity = try Entity.loadModel(named: modelName)
+            let plantEntity = try Entity.load(named: modelName + ".usdz")
             
             anchor.addChild(plantEntity)
             arView.scene.addAnchor(anchor)

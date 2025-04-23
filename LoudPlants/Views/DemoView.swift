@@ -10,7 +10,7 @@ import RealityKit
 
 struct DemoView: View {
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject private var arSession: ARSessionManager
+    private let arSession = ARSessionManager.shared
     
     // Local state for showing sheets
     @State private var showPicker = false
@@ -18,10 +18,8 @@ struct DemoView: View {
     
     // Sample plant models
     private let plantModels = [
-        PlantModel(id: "fern", displayName: "Fern", thumbnailName: "fern_thumb"),
-        PlantModel(id: "succulent", displayName: "Succulent", thumbnailName: "succ_thumb"),
-        PlantModel(id: "fern2", displayName: "Fern2", thumbnailName: "fern_thumb"),
-        PlantModel(id: "succulent2", displayName: "Succulent2", thumbnailName: "succ_thumb")
+        PlantModel(id: "1", displayName: "Flytrap", modelName: "Flytrap with Green Dot", thumbnailName: "flytrap_thumb"),
+
     ]
     
     var body: some View {
@@ -95,7 +93,7 @@ struct DemoView: View {
                 isPresented: $showPicker
             ) {
                 PlantPickerView(plantModels: plantModels) { selected in
-                    arSession.placeModel(named: selected.id)
+                    arSession.placeModel(named: selected.modelName)
                     showPicker = false
                 }
                 .presentationDetents([.medium, .large])

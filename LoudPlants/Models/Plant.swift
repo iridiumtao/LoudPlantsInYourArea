@@ -8,5 +8,6 @@
 struct PlantModel: Identifiable {
     var id: String
     var displayName: String
+    var modelName: String
     var thumbnailName: String
 }
