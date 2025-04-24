@@ -10,4 +10,5 @@ struct PlantModel: Identifiable {
     var displayName: String
     var modelName: String
     var thumbnailName: String
+    var greenDot: GreenDot?
 }
