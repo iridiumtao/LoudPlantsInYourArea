@@ -9,19 +9,14 @@ import SwiftUI
 import RealityKit
 
 struct DemoView: View {
+    @StateObject private var viewModel = DemoViewModel()
     @Environment(\.dismiss) private var dismiss
-    private let arSession = ARSessionManager.shared
     
     // Local state for showing sheets
     @State private var showPicker = false
     @State private var showSettings = false
     
-    // Sample plant models
-    private let plantModels = [
-        PlantModel(id: "1", displayName: "Flytrap (Fixed Greeen Dot)", modelName: "Flytrap with Green Dot", thumbnailName: "flytrap_thumb"),
-        PlantModel(id: "2", displayName: "Flytrap (Real Green Dot)", modelName: "Flytrap", thumbnailName: "flytrap_thumb", greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.1)),
 
-    ]
     
     var body: some View {
         ZStack {
@@ -93,8 +88,8 @@ struct DemoView: View {
             .sheet(
                 isPresented: $showPicker
             ) {
-                PlantPickerView(plantModels: plantModels) { selected in
-                    arSession.placeModel(selected)
+                PlantPickerView(plantModels: viewModel.plantModels) { selected in
+                    viewModel.arSession.placeModel(selected)
                     showPicker = false
                 }
                 .presentationDetents([.medium, .large])
