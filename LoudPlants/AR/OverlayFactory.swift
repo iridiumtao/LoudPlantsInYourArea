@@ -28,6 +28,7 @@ enum OverlayFactory {
         return card
     }
 
+    // not used, potentially problemetic
     /// Rasterize UIKit/SwiftUI views into textures and apply them to planes
     static func makeCardFrom(view: UIView, size: CGSize) -> ModelEntity {
         let renderer = UIGraphicsImageRenderer(size: size)

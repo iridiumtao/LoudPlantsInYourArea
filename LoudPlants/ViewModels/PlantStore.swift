@@ -8,7 +8,7 @@ import SwiftUI
 
 class PlantStore: ObservableObject {
     @Published var plants: [PlantModel] = []
-    @Published private var statuses: [String: PlantStatus] = [:]
+    @Published var statuses: [String: PlantStatus] = [:]
 
     init(initialPlants: [PlantModel] = []) {
         self.plants = initialPlants

@@ -29,6 +29,8 @@ final class OverlayPresenter {
                 self?.refreshOverlay(plantStore: plantStore)
             }
             .store(in: &cancellables)
+        
+        // todo: did not listen to plant status change
     }
 
     private var currentOverlay: Entity?
