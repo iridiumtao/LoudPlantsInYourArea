@@ -7,21 +7,35 @@
 
 import UIKit
 
-/// Raw status coming from backend or mock service
-public struct PlantStatus {
-    public let text: String
-    public let color: UIColor
-}
+/// ViewModel 用於 OverlayFactory 排版
+struct PlantStatusViewModel {
+    let id: String
+    let displayName: String
+    let statusText: String
+    let statusColor: UIColor
+    let avatarImage: UIImage?
+    let overlaySize: SIMD2<Float>
 
-/// View‑friendly projection for overlay text & color
-public struct PlantStatusViewModel {
-    public let displayName: String
-    public let statusText: String
-    public let statusColor: UIColor
-
-    init(model: PlantModel, status: PlantStatus) {
-        self.displayName = model.displayName
-        self.statusText  = status.text
-        self.statusColor = status.color
+    init(plant: Plant) {
+        self.id = plant.id
+        self.displayName = plant.name
+        // 以 rawValue 產生顯示文字，可依需求格式化
+        self.statusText = plant.status.rawValue.capitalized
+        // 根據狀態設定顏色
+        switch plant.status {
+        case .happy:
+            self.statusColor = .green
+        case .normal:
+            self.statusColor = .gray
+        case .sad:
+            self.statusColor = .orange
+        case .crying:
+            self.statusColor = .blue
+        }
+        // 從 imageName 載入頭像
+        self.avatarImage = UIImage(named: plant.imageName)
+        // 轉成 SIMD2<Float>
+        self.overlaySize = SIMD2<Float>(Float(plant.overlaySize.x),
+                                        Float(plant.overlaySize.y))
     }
 }

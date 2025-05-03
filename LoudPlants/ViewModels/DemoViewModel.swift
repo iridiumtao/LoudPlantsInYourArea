@@ -30,7 +30,19 @@ class DemoViewModel: ObservableObject {
         ]
         self.plantModels = plantModels
 
-        self.plantStore = PlantStore(initialPlants: plantModels)
+        // Convert PlantModel array into Plant instances for the store
+        let plants = plantModels.map { model in
+            Plant(
+                id: model.id,
+                name: model.displayName,
+                status: .normal,
+                model: model,             // default initial status
+                imageName: model.thumbnailName,
+                overlaySize: (x: 1.0, y: 0.8) // default overlay size
+            )
+        }
+
+        self.plantStore = PlantStore(initialPlants: plants)
 
         self.overlayPresenter = OverlayPresenter(arSession: ARSessionManager.shared,
                                                  plantStore: plantStore)

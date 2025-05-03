@@ -7,6 +7,7 @@
 
 import RealityKit
 import Combine
+import UIKit
 
 final class OverlayPresenter {
     private let arSession: ARSessionManager
@@ -46,9 +47,11 @@ final class OverlayPresenter {
         
         print("Showing overlay for", plantEntity.name)
 
-
-        let vm = PlantStatusViewModel(model: model.model,
-                                      status: plantStore.statusFor(id: model.model.id))
+        // 根據 plantStore 找到完整 Plant
+        guard let plant = plantStore.plants.first(where: { $0.id == model.model.id }) else {
+            return
+        }
+        let vm = PlantStatusViewModel(plant: plant)
         let overlay = OverlayFactory.makeBasicStatusCard(for: vm)
         overlay.position = [0.15, 0.05, 0]
         plantEntity.addChild(overlay)
@@ -65,8 +68,8 @@ final class OverlayPresenter {
         print("Refresing overlay for", info.model)
 
         // Only need to update text or materials, no need to rebuild Entity
-        let newVM = PlantStatusViewModel(model: info.model,
-                                         status: plantStore.statusFor(id: info.model.id))
+//        let newVM = PlantStatus(model: info.model,
+//                                         status: plantStore.statusFor(id: info.model.id))
         // ...update overlay’s child text entities here
     }
 }

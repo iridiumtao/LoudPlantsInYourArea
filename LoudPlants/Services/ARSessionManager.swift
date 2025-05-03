@@ -98,7 +98,7 @@ final class ARSessionManager: ObservableObject {
 
         for entity in placedPlants {
             let d = distance(entity.position(relativeTo: nil), camPos)
-            if d < 0.6, d < nearestDist {         // 0.6 m trigger
+            if d < 5.6, d < nearestDist {         // 0.6 m trigger
                 nearest = entity
                 nearestDist = d
             }

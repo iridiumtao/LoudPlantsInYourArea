@@ -6,25 +6,19 @@
 //
 import SwiftUI
 
+/// PlantStore manages the collection of Plant objects used throughout the app.
+/// It acts as the single source of truth for all Plant data and provides methods
+/// to update a plant's status, notifying views of changes via Combine.
 class PlantStore: ObservableObject {
-    @Published var plants: [PlantModel] = []
-    @Published var statuses: [String: PlantStatus] = [:]
+    @Published var plants: [Plant] = []
 
-    init(initialPlants: [PlantModel] = []) {
+    init(initialPlants: [Plant] = []) {
         self.plants = initialPlants
-        // Initialize default statuses (e.g., Healthy)
-        for plant in plants {
-            statuses[plant.id] = PlantStatus(text: "Unknown", color: .gray)
-        }
     }
 
-    /// Returns the status for a given plant ID, or a default if missing
-    func statusFor(id: String) -> PlantStatus {
-        return statuses[id] ?? PlantStatus(text: "Unknown", color: .gray)
-    }
-
-    /// Update status for plant with given ID
+    /// Update the status of the plant with the given ID
     func updateStatus(for id: String, to newStatus: PlantStatus) {
-        statuses[id] = newStatus
+        guard let index = plants.firstIndex(where: { $0.id == id }) else { return }
+        plants[index].status = newStatus
     }
 }
