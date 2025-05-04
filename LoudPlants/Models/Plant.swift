@@ -9,12 +9,12 @@ struct Plant: Identifiable {
     public var id: String
     public var name: String
     public var status: PlantStatus
-    public var model: PlantModel
+    public var model: PlantEntity
     public var imageName: String
     public var overlaySize: (x: Double, y: Double)
 }
 
-struct PlantModel: Identifiable {
+struct PlantEntity: Identifiable {
     var id: String
     var modelName: String
     var thumbnailName: String

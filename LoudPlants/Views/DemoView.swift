@@ -88,7 +88,7 @@ struct DemoView: View {
             .sheet(
                 isPresented: $showPicker
             ) {
-                PlantPickerView(plantModels: viewModel.plantModels) { selected in
+                PlantPickerView(plantEntities: viewModel.plantEntities) { selected in
                     viewModel.arSession.placeModel(selected)
                     showPicker = false
                 }

@@ -11,9 +11,9 @@ import Combine
 import simd
 import Foundation
 
-/// Stores original PlantModel on placed Entity
+/// Stores original PlantEntity on placed Entity
 struct PlantInfoComponent: Component {
-    let model: PlantModel
+    let model: PlantEntity
 }
 
 /// Manages a single ARView & handles raycasts + anchor placement
@@ -48,7 +48,7 @@ final class ARSessionManager: ObservableObject {
     }
 
     /// Raycast from screen center and place the specified model
-    func placeModel(_ plant: PlantModel) {
+    func placeModel(_ plant: PlantEntity) {
         let center = arView.center
         guard let query = arView.makeRaycastQuery(from: center,
                                                   allowing: .estimatedPlane,
