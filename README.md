@@ -38,3 +38,6 @@ You (ViewController) are going to school, your mom (Coordinator) wakes you up (i
 ### Reference
 
 [Default Background Image when no AR](https://www.freepik.com/free-photo/indoor-plants-studio_94548503.html)
+
+### 3D Model
+[Succulents by OSuZQ](https://sketchfab.com/3d-models/succulents-454472b7435c4fcf96424df82d8a3506)

@@ -40,11 +40,11 @@ enum OverlayFactory {
         
         // Precomputed relative positions
         let iconX = -width * 0.08
-        let textX = iconX + iconSize * 1.2
-        let headerY1 = height * 0.15
-        let bodyY1   = height * 0.15
-        let headerY2 = -height * 0.05
-        let bodyY2   = -height * 0.25
+        let headerX = iconX + iconSize * 1.3
+        let headerY1 = height/2 * 0.8
+        let bodyY1   = height/2 * 0.5
+        let headerY2 = -height/2 * 0.2
+        let bodyY2   = -height/2 * 0.5
         
         // Title container: full width minus icon offset, height proportional to card
         let bodyWidth = CGFloat(width * 0.6)
@@ -65,7 +65,7 @@ enum OverlayFactory {
         if let bell = UIImage(systemName: "bell.fill") {
             try? card.addIcon(bell,
                               size: iconSize,
-                              at: [0, 0, iconDepth])
+                              at: [iconX, headerY1, iconDepth])
         }
         //    b) 接著文字「Status」
         card.addMultilineText("Status",
@@ -74,7 +74,7 @@ enum OverlayFactory {
                               containerFrame: headerFrame1,
                               alignment: .left,
                               lineBreakMode: .byTruncatingTail,
-                              at: [0, 0, iconDepth])
+                              at: [headerX, headerY1, iconDepth])
         
         // 5) 第二段：描述文字
         let statusBody = "Stark is crying. Some more texts here texts texts"
@@ -84,13 +84,13 @@ enum OverlayFactory {
                               containerFrame: bodyFrame1,
                               alignment: .left,
                               lineBreakMode: .byWordWrapping,
-                              at: [0, 0, iconDepth])
+                              at: [iconX, bodyY1, iconDepth])
         
         // 6) 第三段：Icon + Plant
         if let leaf = UIImage(systemName: "leaf.fill") {
             try? card.addIcon(leaf,
                               size: iconSize,
-                              at: [0, 0, iconDepth])
+                              at: [iconX, headerY2, iconDepth])
         }
         card.addMultilineText("Plant",
                               font: titleFont,
@@ -98,7 +98,7 @@ enum OverlayFactory {
                               containerFrame: headerFrame2,
                               alignment: .left,
                               lineBreakMode: .byTruncatingTail,
-                              at: [0, 0, iconDepth])
+                              at: [headerX, headerY2, iconDepth])
         
         // 7) 第四段：Plant 名稱
         let plantBody = "Venus Flytrap"
@@ -108,7 +108,7 @@ enum OverlayFactory {
                               containerFrame: bodyFrame2,
                               alignment: .left,
                               lineBreakMode: .byTruncatingTail,
-                              at: [0, 0, iconDepth])
+                              at: [iconX, bodyY2, iconDepth])
         
 
         return card

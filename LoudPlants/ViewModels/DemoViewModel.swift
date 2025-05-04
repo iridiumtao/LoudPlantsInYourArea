@@ -18,33 +18,60 @@ class DemoViewModel: ObservableObject {
 
     init() {
         // define models
-        let plantModels = [
-            PlantModel(id: "1", displayName: "Flytrap (Fixed Greeen Dot)",
-                       modelName: "Flytrap with Green Dot",
-                       thumbnailName: "flytrap_thumb"),
-            PlantModel(id: "2", displayName: "Flytrap (Real Green Dot)",
-                       modelName: "Flytrap",
-                       thumbnailName: "flytrap_thumb",
-                       greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028),
-                                          size: 0.1))
+        // Define all PlantModels
+        let plantModels: [PlantModel] = [
+            PlantModel(
+                id: "1",
+                modelName: "Flytrap with Green Dot",
+                thumbnailName: "flytrap"
+            ),
+            PlantModel(
+                id: "2",
+                modelName: "Flytrap",
+                thumbnailName: "flytrap",
+                greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.1)
+            ),
+            PlantModel(
+                id: "3",
+                modelName: "Succulent",
+                thumbnailName: "succulent",
+                greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.1)
+            )
         ]
         self.plantModels = plantModels
 
-        // Convert PlantModel array into Plant instances for the store
-        let plants = plantModels.map { model in
+        // Define all Plants referencing PlantModels by ID
+        let plants: [Plant] = [
             Plant(
-                id: model.id,
-                name: model.displayName,
+                id: "1",
+                name: "Flytrap (Fixed Green Dot)",
+                status: .sad,
+                model: plantModels.first(where: { $0.id == "1" })!,
+                imageName: "flytrap",
+                overlaySize: (x: 1.8, y: 0.8)
+            ),
+            Plant(
+                id: "2",
+                name: "Flytrap (Real Green Dot)",
+                status: .crying,
+                model: plantModels.first(where: { $0.id == "2" })!,
+                imageName: "flytrap",
+                overlaySize: (x: 1.8, y: 0.8)
+            ),
+            Plant(
+                id: "3",
+                name: "tbd",
                 status: .normal,
-                model: model,             // default initial status
-                imageName: model.thumbnailName,
-                overlaySize: (x: 1.8, y: 0.8) // default overlay size
+                model: plantModels.first(where: { $0.id == "3" })!,
+                imageName: "succulent",
+                overlaySize: (x: 1.8, y: 0.8)
             )
-        }
+        ]
 
         self.plantStore = PlantStore(initialPlants: plants)
 
         self.overlayPresenter = OverlayPresenter(arSession: ARSessionManager.shared,
                                                  plantStore: plantStore)
+
     }
 }

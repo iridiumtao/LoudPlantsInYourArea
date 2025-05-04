@@ -23,13 +23,14 @@ struct PlantPickerView: View {
 
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 16) {
+
                     ForEach(plantModels) { model in
                         VStack(spacing: 8) {
                             Image(model.thumbnailName)
                                 .resizable()
                                 .aspectRatio(1, contentMode: .fit)
                                 .cornerRadius(8)
-                            Text(model.displayName)
+                            Text(model.modelName)
                                 .font(.caption)
                         }
                         .onTapGesture {
@@ -46,8 +47,7 @@ struct PlantPickerView: View {
 
 struct PlantPickerView_Previews: PreviewProvider {
     static let samples = [
-        PlantModel(id: "fern", displayName: "Fern", modelName: "String", thumbnailName: "fern_thumb"),
-        PlantModel(id: "succulent", displayName: "Succulent", modelName: "String", thumbnailName: "succ_thumb"),
+        PlantModel(id: "succulent", modelName: "Succulent", thumbnailName: "succ_thumb"),
     ]
 
     static var previews: some View {

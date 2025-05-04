@@ -44,7 +44,6 @@ final class OverlayPresenter {
             let plantEntity,
             let model = plantEntity.components[PlantInfoComponent.self]
         else { return }
-        
         print("Showing overlay for", plantEntity.name)
         
         // 根據 plantStore 找到完整 Plant
