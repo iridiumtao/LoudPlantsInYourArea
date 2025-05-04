@@ -46,29 +46,26 @@ enum OverlayFactory {
         let headerY2 = -height * 0.05
         let bodyY2   = -height * 0.25
         
-        // 2) 根據卡片尺寸計算兩種文字區塊大小
-        //    headerFrame: 用於「Icon + 標題」(共用)
-        //    bodyFrame: 用於「描述文字」(共用)
-        let headerWidth  = CGFloat(width * 0.6)
-        let headerHeight = CGFloat(height * 0.5)
-        let headerFrame1  = CGRect(origin: CGPoint(x: 0 - CGFloat(iconX), y: 0-headerHeight+0.1),
-                                  size: CGSize(width: headerWidth, height: headerHeight))
-        let headerFrame2  = CGRect(origin: CGPoint(x: 0 - CGFloat(iconX), y: 0-headerHeight+0.1),
-                                  size: CGSize(width: headerWidth, height: headerHeight))
+        // Title container: full width minus icon offset, height proportional to card
+        let bodyWidth = CGFloat(width * 0.6)
+        let headerWidth  = bodyWidth - CGFloat(iconX * 1.2)
+        let headerHeight = height * 0.2
+        let headerFrame1 = CGRect(origin: .zero,
+                                  size: CGSize(width: CGFloat(headerWidth), height: CGFloat(headerHeight)))
+        let headerFrame2 = headerFrame1
         
-        let bodyWidth  = CGFloat(width * 0.6)
-        let bodyHeight = CGFloat(height * 0.4)
-        let bodyFrame1  = CGRect(origin: CGPoint(x: 0, y: 0-bodyHeight),
-                                size: CGSize(width: bodyWidth, height: bodyHeight))
-        let bodyFrame2  = CGRect(origin: CGPoint(x: 0, y: 0-bodyHeight),
-                                size: CGSize(width: bodyWidth, height: bodyHeight))
+        // Body container: full card width, height proportional to card
+        let bodyHeight = height * 0.3
+        let bodyFrame1 = CGRect(origin: .zero,
+                                size: CGSize(width: CGFloat(bodyWidth), height: CGFloat(bodyHeight)))
+        let bodyFrame2 = bodyFrame1
         
         // 4) 第一段：Icon + Status
         //    a) 先貼一個 SF Symbol
         if let bell = UIImage(systemName: "bell.fill") {
             try? card.addIcon(bell,
                               size: iconSize,
-                              at: [iconX, headerY1, iconDepth])
+                              at: [0, 0, iconDepth])
         }
         //    b) 接著文字「Status」
         card.addMultilineText("Status",
@@ -93,7 +90,7 @@ enum OverlayFactory {
         if let leaf = UIImage(systemName: "leaf.fill") {
             try? card.addIcon(leaf,
                               size: iconSize,
-                              at: [iconX, headerY2, iconDepth])
+                              at: [0, 0, iconDepth])
         }
         card.addMultilineText("Plant",
                               font: titleFont,
@@ -119,7 +116,7 @@ enum OverlayFactory {
 }
 
 extension Entity {
-
+    
     func addAvatar(with avatarImage: UIImage,
                    in cardSize: SIMD2<Float>) throws {
         
@@ -166,36 +163,36 @@ extension Entity {
     }
     
     func addMultilineText(
-            _ text: String,
-            font: UIFont,
-            color: UIColor,
-            containerFrame: CGRect,
-            alignment: CTTextAlignment = .left,
-            lineBreakMode: CTLineBreakMode = .byWordWrapping,
-            at position: SIMD3<Float>
-        ) {
-            // 1. Generate the text mesh with layout parameters
-            let mesh = MeshResource.generateText(
-                text,
-                extrusionDepth: 0.001,
-                font: font,
-                containerFrame: containerFrame,
-                alignment: alignment,
-                lineBreakMode: lineBreakMode
-            )
-            
-            // 2. Create material
-            let material = SimpleMaterial(color: color, isMetallic: false)
-            
-            // 3. Instantiate ModelEntity
-            let textEntity = ModelEntity(mesh: mesh, materials: [material])
-            
-            // 4. Set position
-            textEntity.position = position
-            
-            // 5. Add to self
-            self.addChild(textEntity)
-        }
+        _ text: String,
+        font: UIFont,
+        color: UIColor,
+        containerFrame: CGRect,
+        alignment: CTTextAlignment = .left,
+        lineBreakMode: CTLineBreakMode = .byWordWrapping,
+        at position: SIMD3<Float>
+    ) {
+        // 1. Generate the text mesh with layout parameters
+        let mesh = MeshResource.generateText(
+            text,
+            extrusionDepth: 0.001,
+            font: font,
+            containerFrame: containerFrame,
+            alignment: alignment,
+            lineBreakMode: lineBreakMode
+        )
+        
+        let material = SimpleMaterial(color: color, isMetallic: false)
+        let textEntity = ModelEntity(mesh: mesh, materials: [material])
+        
+        // calculate pivot offset to left-top
+        let bounds = textEntity.visualBounds(relativeTo: textEntity)
+        let pivotOffset = SIMD3<Float>(-bounds.min.x, -bounds.max.y, 0)
+        // set position including pivot offset
+        textEntity.position = position + pivotOffset
+        
+        self.addChild(textEntity)
+    }
+    
     func addIcon(_ image: UIImage, size: Float, at position: SIMD3<Float>) throws {
         guard let cg = image.cgImage else { return }
         let plane = MeshResource.generatePlane(width: size, height: size)
@@ -206,7 +203,11 @@ extension Entity {
         let param = MaterialParameters.Texture(tex)
         mat.color = UnlitMaterial.BaseColor(tint: .white, texture: param)
         let iconEnt = ModelEntity(mesh: plane, materials: [mat])
-        iconEnt.position = position
+        
+        let bounds = iconEnt.visualBounds(relativeTo: iconEnt)
+        let pivotOffset = SIMD3<Float>(-bounds.min.x, -bounds.max.y, 0)
+        iconEnt.position = position + pivotOffset
+        
         self.addChild(iconEnt)
     }
 }
