@@ -38,7 +38,7 @@ class DemoViewModel: ObservableObject {
                 status: .normal,
                 model: model,             // default initial status
                 imageName: model.thumbnailName,
-                overlaySize: (x: 1.0, y: 0.8) // default overlay size
+                overlaySize: (x: 1.8, y: 0.8) // default overlay size
             )
         }
 
