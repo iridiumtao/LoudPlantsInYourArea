@@ -66,6 +66,8 @@ final class ARSessionManager: ObservableObject {
             // For USDZ models use:
             let plantEntity = try Entity.load(named: plant.modelName + ".usdz")
             plantEntity.components.set(PlantInfoComponent(model: plant))
+            plantEntity.setVisibility(true)
+            
             placedPlants.append(plantEntity)
             
             if let dotConfig = plant.greenDot,
@@ -107,6 +109,33 @@ final class ARSessionManager: ObservableObject {
         if nearest?.id != focusedPlant?.id {
             print("Focused plant changed: \(String(describing: nearest?.id))")
             focusedPlant = nearest
+        }
+    }
+}
+extension Entity {
+    /// Recursively collect this entity and all descendants
+    private var allEntities: [Entity] {
+        return [self] + children.flatMap { $0.allEntities }
+    }
+
+    /// Set visibility by adjusting material alpha (0 = invisible, 1 = fully visible)
+    func setVisibility(_ visible: Bool) {
+        // Iterate through this entity and all descendants
+        for entity in allEntities {
+            if let modelEntity = entity as? ModelEntity,
+               let materials = modelEntity.model?.materials {
+                if visible {
+                    // Do nothing when making visible (materials remain as is)
+                } else {
+                    // Replace all materials with fully transparent material
+                    let transparentMaterials = materials.map { _ in
+                        var mat = UnlitMaterial()
+                        mat.blending = .transparent(opacity: 0.0)
+                        return mat
+                    }
+                    modelEntity.model?.materials = transparentMaterials
+                }
+            }
         }
     }
 }
