@@ -48,7 +48,7 @@ class DemoViewModel: ObservableObject {
                 name: "Fake Stark",
                 plantSpecies: "Venus Flytrap",
                 status: .sad,
-                model: plantEntities.first(where: { $0.id == "1" })!,
+                entity: plantEntities.first(where: { $0.id == "1" })!,
                 imageName: "flytrap",
                 overlaySize: (x: 0.9, y: 0.4)
             ),
@@ -57,7 +57,7 @@ class DemoViewModel: ObservableObject {
                 name: "Stark",
                 plantSpecies: "Venus Flytrap",
                 status: .crying,
-                model: plantEntities.first(where: { $0.id == "2" })!,
+                entity: plantEntities.first(where: { $0.id == "2" })!,
                 imageName: "flytrap",
                 overlaySize: (x: 0.9, y: 0.4)
             ),
@@ -66,7 +66,7 @@ class DemoViewModel: ObservableObject {
                 name: "Peter",
                 plantSpecies: "Succulents",
                 status: .happy,
-                model: plantEntities.first(where: { $0.id == "3" })!,
+                entity: plantEntities.first(where: { $0.id == "3" })!,
                 imageName: "succulent",
                 overlaySize: (x: 0.9, y: 0.4)
             )

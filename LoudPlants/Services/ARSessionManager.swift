@@ -53,7 +53,7 @@ final class ARSessionManager: ObservableObject {
     }
 
     /// Raycast from screen center and place the specified model
-    func placeModel(_ plantEntity: PlantEntity) {
+    func placeModel(_ plant: Plant) {
         let center = arView.center
         guard let query = arView.makeRaycastQuery(from: center,
                                                   allowing: .estimatedPlane,
@@ -69,17 +69,15 @@ final class ARSessionManager: ObservableObject {
             // let plantEntity = try Entity.load(named: model.modelName)
             
             // For USDZ models use:
-            let plantModelEntity = try Entity.load(named: plantEntity.modelName)
+            let plantModelEntity = try Entity.load(named: plant.entity .modelName)
+            let plantEntity = plant.entity
             plantModelEntity.components.set(PlantInfoComponent(model: plantEntity))
             plantModelEntity.setVisibility(plantVisibilityEnabled)
             
             placedPlants.append(plantModelEntity)
             
-            // hardcoded bad practice
-            let demoVM = DemoViewModel()
-            let myPlant = demoVM.plants.first(where: { $0.id == plantEntity.id })!
             
-            switch myPlant.status {
+            switch plant.status {
             case .happy:
                 if let dotConfig = plantEntity.greenDot,
                    let dotEntity = try? Entity.load(named: "Green Dot" + ".usdz") {
@@ -108,16 +106,11 @@ final class ARSessionManager: ObservableObject {
                     plantModelEntity.addChild(dotEntity)
                 }
             }
-            
-            // end bad practice
-            
-            
-            
 
             anchor.addChild(plantModelEntity)
             arView.scene.addAnchor(anchor)
         } catch {
-            print("❌ Failed to load model '\(plantEntity.modelName)': \(error)")
+            print("❌ Failed to load model '\(plant.entity.modelName)': \(error)")
         }
     }
 
