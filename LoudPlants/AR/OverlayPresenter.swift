@@ -92,7 +92,7 @@ extension ModelEntity {
             yOffset += 0.3
         }
         let zOffset: Float = 0.01  // small positive z to avoid z-fighting
-        print(vm.overlaySize.y, " ", bounds.extents.y, " ", yOffset)
+        
         // 5. set the position relative to plantEntity
         self.position = [ xOffset,
                           yOffset,
