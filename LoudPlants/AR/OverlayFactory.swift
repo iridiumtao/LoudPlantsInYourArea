@@ -1,10 +1,14 @@
 // AR/OverlayFactory.swift
 import RealityKit
 import UIKit
+import SwiftUI
 
 enum OverlayFactory {
     /// 根據 PlantStatusViewModel 自動產生樣式化 Overlay
     static func makeBasicStatusCard(for plantStatusVM: PlantStatusViewModel) -> ModelEntity {
+        
+        @AppStorage("statusCardFollowCameraEnabled") var statusCardFollowCameraEnabled: Bool = true
+        
         let width  = plantStatusVM.overlaySize.x
         let height = plantStatusVM.overlaySize.y
         let corner = width * 0.1
@@ -19,8 +23,10 @@ enum OverlayFactory {
         simpleMaterial.blending = .transparent(opacity: 0.95)
         
         let card = ModelEntity(mesh: plane, materials: [simpleMaterial])
-        card.components.set(BillboardComponent())
-
+        
+        if statusCardFollowCameraEnabled {
+            card.components.set(BillboardComponent())
+        }
 
         // Avatar
         if let avatar = plantStatusVM.avatarImage {
