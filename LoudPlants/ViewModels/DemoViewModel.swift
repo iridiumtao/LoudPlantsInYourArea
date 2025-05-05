@@ -49,7 +49,7 @@ class DemoViewModel: ObservableObject {
                 status: .sad,
                 model: plantEntities.first(where: { $0.id == "1" })!,
                 imageName: "flytrap",
-                overlaySize: (x: 1.8, y: 0.8)
+                overlaySize: (x: 0.9, y: 0.4)
             ),
             Plant(
                 id: "2",
@@ -58,7 +58,7 @@ class DemoViewModel: ObservableObject {
                 status: .crying,
                 model: plantEntities.first(where: { $0.id == "2" })!,
                 imageName: "flytrap",
-                overlaySize: (x: 1.8, y: 0.8)
+                overlaySize: (x: 0.9, y: 0.4)
             ),
             Plant(
                 id: "3",
@@ -67,7 +67,7 @@ class DemoViewModel: ObservableObject {
                 status: .normal,
                 model: plantEntities.first(where: { $0.id == "3" })!,
                 imageName: "succulent",
-                overlaySize: (x: 1.8, y: 0.8)
+                overlaySize: (x: 0.9, y: 0.4)
             )
         ]
 
