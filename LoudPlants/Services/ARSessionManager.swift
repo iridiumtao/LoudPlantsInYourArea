@@ -10,6 +10,7 @@ import ARKit
 import Combine
 import simd
 import Foundation
+import SwiftUI
 
 /// Stores original PlantEntity on placed Entity
 struct PlantInfoComponent: Component {
@@ -19,6 +20,8 @@ struct PlantInfoComponent: Component {
 /// Manages a single ARView & handles raycasts + anchor placement
 final class ARSessionManager: ObservableObject {
     static let shared = ARSessionManager()
+    @AppStorage("plantVisibilityEnabled") private var plantVisibilityEnabled: Bool = true
+
 
     /// The ARView we drive
     let arView: ARView
@@ -66,7 +69,7 @@ final class ARSessionManager: ObservableObject {
             // For USDZ models use:
             let plantEntity = try Entity.load(named: plant.modelName + ".usdz")
             plantEntity.components.set(PlantInfoComponent(model: plant))
-            plantEntity.setVisibility(true)
+            plantEntity.setVisibility(plantVisibilityEnabled)
             
             placedPlants.append(plantEntity)
             

@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @AppStorage("plantVisibilityEnabled") private var plantVisibilityEnabled: Bool = true
+
     var body: some View {
-        Text("SettingView")
+        Form {
+            Toggle("Set Plant Visibility", isOn: $plantVisibilityEnabled)
+                .toggleStyle(SwitchToggleStyle())
+                .padding()
+        }
     }
 }
