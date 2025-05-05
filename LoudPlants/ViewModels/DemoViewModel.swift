@@ -44,7 +44,8 @@ class DemoViewModel: ObservableObject {
         let plants: [Plant] = [
             Plant(
                 id: "1",
-                name: "Flytrap (Fixed Green Dot)",
+                name: "Fake Stark",
+                plantSpecies: "Venus Flytrap",
                 status: .sad,
                 model: plantEntities.first(where: { $0.id == "1" })!,
                 imageName: "flytrap",
@@ -52,7 +53,8 @@ class DemoViewModel: ObservableObject {
             ),
             Plant(
                 id: "2",
-                name: "Flytrap (Real Green Dot)",
+                name: "Stark",
+                plantSpecies: "Venus Flytrap",
                 status: .crying,
                 model: plantEntities.first(where: { $0.id == "2" })!,
                 imageName: "flytrap",
@@ -60,7 +62,8 @@ class DemoViewModel: ObservableObject {
             ),
             Plant(
                 id: "3",
-                name: "tbd",
+                name: "Peter",
+                plantSpecies: "Succulents",
                 status: .normal,
                 model: plantEntities.first(where: { $0.id == "3" })!,
                 imageName: "succulent",

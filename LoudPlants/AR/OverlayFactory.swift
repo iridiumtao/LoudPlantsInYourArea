@@ -4,9 +4,9 @@ import UIKit
 
 enum OverlayFactory {
     /// 根據 PlantStatusViewModel 自動產生樣式化 Overlay
-    static func makeBasicStatusCard(for vm: PlantStatusViewModel) -> ModelEntity {
-        let width  = vm.overlaySize.x
-        let height = vm.overlaySize.y
+    static func makeBasicStatusCard(for plantStatusVM: PlantStatusViewModel) -> ModelEntity {
+        let width  = plantStatusVM.overlaySize.x
+        let height = plantStatusVM.overlaySize.y
         let corner = width * 0.1
 
         let plane = MeshResource.generatePlane(
@@ -23,8 +23,8 @@ enum OverlayFactory {
 
 
         // Avatar
-        if let avatar = vm.avatarImage {
-            try? card.addAvatar(with: avatar, in: vm.overlaySize)
+        if let avatar = plantStatusVM.avatarImage {
+            try? card.addAvatar(with: avatar, in: plantStatusVM.overlaySize)
         }
         
 
@@ -77,7 +77,7 @@ enum OverlayFactory {
                               at: [headerX, headerY1, iconDepth])
         
         // 5) 第二段：描述文字
-        let statusBody = "Stark is crying. Some more texts here texts texts"
+        let statusBody = plantStatusVM.statusText
         card.addMultilineText(statusBody,
                               font: bodyFont,
                               color: bodyTextColor,
@@ -101,7 +101,7 @@ enum OverlayFactory {
                               at: [headerX, headerY2, iconDepth])
         
         // 7) 第四段：Plant 名稱
-        let plantBody = "Venus Flytrap"
+        let plantBody = plantStatusVM.plantSpecies
         card.addMultilineText(plantBody,
                               font: bodyFont,
                               color: bodyTextColor,

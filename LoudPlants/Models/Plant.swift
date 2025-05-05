@@ -8,6 +8,7 @@ import UIKit
 struct Plant: Identifiable {
     public var id: String
     public var name: String
+    public var plantSpecies: String
     public var status: PlantStatus
     public var model: PlantEntity
     public var imageName: String
