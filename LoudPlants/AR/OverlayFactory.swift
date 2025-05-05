@@ -47,8 +47,8 @@ enum OverlayFactory {
         let bodyY2   = -height/2 * 0.5
         
         // Title container: full width minus icon offset, height proportional to card
-        let bodyWidth = CGFloat(width * 0.6)
-        let headerWidth  = bodyWidth - CGFloat(iconX * 1.2)
+        let bodyWidth = CGFloat(width * 0.55)
+        let headerWidth  = bodyWidth - CGFloat(iconX * 2)
         let headerHeight = height * 0.2
         let headerFrame1 = CGRect(origin: .zero,
                                   size: CGSize(width: CGFloat(headerWidth), height: CGFloat(headerHeight)))
