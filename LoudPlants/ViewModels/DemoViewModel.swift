@@ -28,12 +28,14 @@ class DemoViewModel: ObservableObject {
             PlantEntity(
                 id: "2",
                 modelName: "Sad Plant",
-                thumbnailName: "flytrap_crying"
+                thumbnailName: "flytrap_crying",
+                greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.5)
             ),
             PlantEntity(
                 id: "3",
                 modelName: "Happy Plant",
-                thumbnailName: "succulent"
+                thumbnailName: "succulent",
+                greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.5)
             )
         ]
         self.plantEntities = plantEntities
