@@ -1,0 +1,48 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (448.100.13)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    def "Sad_Plant" (
+        active = true
+        prepend references = @Sad Plant.usda@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Succulent_with_background"
+        {
+            over "CloudA" (
+                active = false
+            )
+            {
+            }
+
+            over "CloudB" (
+                active = false
+            )
+            {
+            }
+
+            over "CloudC" (
+                active = false
+            )
+            {
+            }
+
+            over "Orange_Dot"
+            {
+                float3 xformOp:scale = (0.3, 0.3, 0.3)
+            }
+        }
+    }
+}
+

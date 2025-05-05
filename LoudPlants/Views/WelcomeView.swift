@@ -18,7 +18,7 @@ struct WelcomeView: View {
             Button {
                 showDemo.toggle()
             } label: {
-                Label("View Demo", systemImage: "arkit")
+                Label("View Your Plants", systemImage: "arkit")
             }
             .controlSize(.large)
             .padding(24)

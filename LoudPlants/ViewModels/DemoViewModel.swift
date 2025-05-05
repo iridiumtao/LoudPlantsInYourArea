@@ -22,20 +22,18 @@ class DemoViewModel: ObservableObject {
         let plantEntities: [PlantEntity] = [
             PlantEntity(
                 id: "1",
-                modelName: "Flytrap with Green Dot",
+                modelName: "Flytrap",
                 thumbnailName: "flytrap"
             ),
             PlantEntity(
                 id: "2",
-                modelName: "Flytrap",
-                thumbnailName: "flytrap",
-                greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.1)
+                modelName: "Sad Plant",
+                thumbnailName: "flytrap_crying"
             ),
             PlantEntity(
                 id: "3",
-                modelName: "Succulent",
-                thumbnailName: "succulent",
-                greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.1)
+                modelName: "Happy Plant",
+                thumbnailName: "succulent"
             )
         ]
         self.plantEntities = plantEntities
@@ -64,7 +62,7 @@ class DemoViewModel: ObservableObject {
                 id: "3",
                 name: "Peter",
                 plantSpecies: "Succulents",
-                status: .normal,
+                status: .happy,
                 model: plantEntities.first(where: { $0.id == "3" })!,
                 imageName: "succulent",
                 overlaySize: (x: 0.9, y: 0.4)

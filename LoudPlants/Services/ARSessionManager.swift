@@ -7,6 +7,7 @@
 
 import RealityKit
 import ARKit
+import sceneKit
 import Combine
 import simd
 import Foundation
@@ -67,7 +68,7 @@ final class ARSessionManager: ObservableObject {
             // let plantEntity = try Entity.load(named: model.modelName)
             
             // For USDZ models use:
-            let plantEntity = try Entity.load(named: plant.modelName + ".usdz")
+            let plantEntity = try Entity.load(named: plant.modelName + ".usda")
             plantEntity.components.set(PlantInfoComponent(model: plant))
             plantEntity.setVisibility(plantVisibilityEnabled)
             
@@ -81,6 +82,8 @@ final class ARSessionManager: ObservableObject {
                 dotEntity.components.set(BillboardComponent())
                 plantEntity.addChild(dotEntity)
             }
+            
+
             
             anchor.addChild(plantEntity)
             arView.scene.addAnchor(anchor)
