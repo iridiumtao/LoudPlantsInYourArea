@@ -12,6 +12,7 @@ import Combine
 
 class DemoViewModel: ObservableObject {
     @Published var plantEntities: [PlantEntity]
+    @Published var plants: [Plant]
     let plantStore: PlantStore
     let overlayPresenter: OverlayPresenter
     let arSession = ARSessionManager.shared
@@ -29,13 +30,13 @@ class DemoViewModel: ObservableObject {
                 id: "2",
                 modelName: "Sad Plant",
                 thumbnailName: "flytrap_crying",
-                greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.5)
+                greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.3)
             ),
             PlantEntity(
                 id: "3",
                 modelName: "Happy Plant",
                 thumbnailName: "succulent",
-                greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.5)
+                greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.3)
             )
         ]
         self.plantEntities = plantEntities
@@ -70,8 +71,9 @@ class DemoViewModel: ObservableObject {
                 overlaySize: (x: 0.9, y: 0.4)
             )
         ]
-
+        
         self.plantStore = PlantStore(initialPlants: plants)
+        self.plants = plants
 
         self.overlayPresenter = OverlayPresenter(arSession: ARSessionManager.shared,
                                                  plantStore: plantStore)

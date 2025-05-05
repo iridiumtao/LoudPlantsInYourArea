@@ -21,6 +21,8 @@ struct PlantInfoComponent: Component {
 final class ARSessionManager: ObservableObject {
     static let shared = ARSessionManager()
     @AppStorage("plantVisibilityEnabled") private var plantVisibilityEnabled: Bool = true
+    
+    
 
 
     /// The ARView we drive
@@ -51,7 +53,7 @@ final class ARSessionManager: ObservableObject {
     }
 
     /// Raycast from screen center and place the specified model
-    func placeModel(_ plant: PlantEntity) {
+    func placeModel(_ plantEntity: PlantEntity) {
         let center = arView.center
         guard let query = arView.makeRaycastQuery(from: center,
                                                   allowing: .estimatedPlane,
@@ -67,25 +69,55 @@ final class ARSessionManager: ObservableObject {
             // let plantEntity = try Entity.load(named: model.modelName)
             
             // For USDZ models use:
-            let plantEntity = try Entity.load(named: plant.modelName)
-            plantEntity.components.set(PlantInfoComponent(model: plant))
-            plantEntity.setVisibility(plantVisibilityEnabled)
+            let plantModelEntity = try Entity.load(named: plantEntity.modelName)
+            plantModelEntity.components.set(PlantInfoComponent(model: plantEntity))
+            plantModelEntity.setVisibility(plantVisibilityEnabled)
             
-            placedPlants.append(plantEntity)
+            placedPlants.append(plantModelEntity)
             
-            if let dotConfig = plant.greenDot,
-               let dotEntity = try? Entity.load(named: "Green Dot" + ".usdz") {
-                dotEntity.name = "statusDot"
-                dotEntity.scale = SIMD3<Float>(repeating: dotConfig.size)
-                dotEntity.position = dotConfig.offset
-                dotEntity.components.set(BillboardComponent())
-                plantEntity.addChild(dotEntity)
+            // hardcoded bad practice
+            let demoVM = DemoViewModel()
+            let myPlant = demoVM.plants.first(where: { $0.id == plantEntity.id })!
+            
+            switch myPlant.status {
+            case .happy:
+                if let dotConfig = plantEntity.greenDot,
+                   let dotEntity = try? Entity.load(named: "Green Dot" + ".usdz") {
+                    dotEntity.name = "statusDot"
+                    dotEntity.scale = SIMD3<Float>(repeating: dotConfig.size)
+                    dotEntity.position = dotConfig.offset
+                    dotEntity.components.set(BillboardComponent())
+                    plantModelEntity.addChild(dotEntity)
+                }
+            case .crying:
+                if let dotConfig = plantEntity.greenDot,
+                   let dotEntity = try? Entity.load(named: "Orange Dot" + ".usdz") {
+                    dotEntity.name = "statusDot"
+                    dotEntity.scale = SIMD3<Float>(repeating: dotConfig.size)
+                    dotEntity.position = dotConfig.offset
+                    dotEntity.components.set(BillboardComponent())
+                    plantModelEntity.addChild(dotEntity)
+                }
+            default:
+                if let dotConfig = plantEntity.greenDot,
+                   let dotEntity = try? Entity.load(named: "Green Dot" + ".usdz") {
+                    dotEntity.name = "statusDot"
+                    dotEntity.scale = SIMD3<Float>(repeating: dotConfig.size)
+                    dotEntity.position = dotConfig.offset
+                    dotEntity.components.set(BillboardComponent())
+                    plantModelEntity.addChild(dotEntity)
+                }
             }
+            
+            // end bad practice
+            
+            
+            
 
-            anchor.addChild(plantEntity)
+            anchor.addChild(plantModelEntity)
             arView.scene.addAnchor(anchor)
         } catch {
-            print("❌ Failed to load model '\(plant.modelName)': \(error)")
+            print("❌ Failed to load model '\(plantEntity.modelName)': \(error)")
         }
     }
 
