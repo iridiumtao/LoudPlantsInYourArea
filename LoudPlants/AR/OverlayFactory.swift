@@ -12,10 +12,14 @@ enum OverlayFactory {
         let width  = plantStatusVM.overlaySize.x
         let height = plantStatusVM.overlaySize.y
         let corner = width * 0.1
+        // let depth: Float = 0.008
 
+        // I use `generatePlane` because `generateBox`'s cornerRadius has to be min(w,h,d)/2, which is 4 mm in or case.
+        // The way to make a plane with depth and rounded corner is create a .usdz in Reality Composer Pro
         let plane = MeshResource.generatePlane(
             width: width,
             height: height,
+//            depth: depth,
             cornerRadius: corner
         )
         
@@ -27,6 +31,8 @@ enum OverlayFactory {
         if statusCardFollowCameraEnabled {
             card.components.set(BillboardComponent())
         }
+        
+        let textDepth: Float = 0.005
 
         // Avatar
         if let avatar = plantStatusVM.avatarImage {
@@ -42,7 +48,8 @@ enum OverlayFactory {
         let bodyTextColor = UIColor.black
         // Icon sizing and depth
         let iconSize = Float(height * 0.08)
-        let iconDepth = Float(height * 0.01)
+        let iconZ: Float = 0.005
+        let textZ: Float = 0.005
         
         // Precomputed relative positions
         let iconX = -width * 0.08
@@ -71,7 +78,7 @@ enum OverlayFactory {
         if let bell = UIImage(systemName: "bell.fill") {
             try? card.addIcon(bell,
                               size: iconSize,
-                              at: [iconX, headerY1, iconDepth])
+                              at: [iconX, headerY1, iconZ])
         }
         //    b) 接著文字「Status」
         card.addMultilineText("Status",
@@ -80,7 +87,7 @@ enum OverlayFactory {
                               containerFrame: headerFrame1,
                               alignment: .left,
                               lineBreakMode: .byTruncatingTail,
-                              at: [headerX, headerY1, iconDepth])
+                              at: [headerX, headerY1, textZ])
         
         // 5) 第二段：描述文字
         let statusBody = plantStatusVM.statusText
@@ -90,13 +97,13 @@ enum OverlayFactory {
                               containerFrame: bodyFrame1,
                               alignment: .left,
                               lineBreakMode: .byWordWrapping,
-                              at: [iconX, bodyY1, iconDepth])
+                              at: [iconX, bodyY1, textZ])
         
         // 6) 第三段：Icon + Plant
         if let leaf = UIImage(systemName: "leaf.fill") {
             try? card.addIcon(leaf,
                               size: iconSize,
-                              at: [iconX, headerY2, iconDepth])
+                              at: [iconX, headerY2, iconZ])
         }
         card.addMultilineText("Plant",
                               font: titleFont,
@@ -104,7 +111,7 @@ enum OverlayFactory {
                               containerFrame: headerFrame2,
                               alignment: .left,
                               lineBreakMode: .byTruncatingTail,
-                              at: [headerX, headerY2, iconDepth])
+                              at: [headerX, headerY2, textZ])
         
         // 7) 第四段：Plant 名稱
         let plantBody = plantStatusVM.plantSpecies
@@ -114,7 +121,7 @@ enum OverlayFactory {
                               containerFrame: bodyFrame2,
                               alignment: .left,
                               lineBreakMode: .byTruncatingTail,
-                              at: [iconX, bodyY2, iconDepth])
+                              at: [iconX, bodyY2, textZ])
         
 
         return card
@@ -163,7 +170,7 @@ extension Entity {
              cardHeight / 2 - avatarSize / 2 + cardHeight * 0.2,
              
              // Z: fixed depth offset in front of the card
-             0.02
+             0.005
         ]
         self.addChild(avatarEntity)
     }
@@ -180,7 +187,7 @@ extension Entity {
         // 1. Generate the text mesh with layout parameters
         let mesh = MeshResource.generateText(
             text,
-            extrusionDepth: 0.001,
+            extrusionDepth: 0.003,
             font: font,
             containerFrame: containerFrame,
             alignment: alignment,
