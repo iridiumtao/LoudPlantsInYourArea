@@ -87,7 +87,10 @@ extension ModelEntity {
         
         // 4. compute the offsets
         let xOffset = bounds.extents.x + overlayW / 2 + padding
-        let yOffset = bounds.extents.y + overlayH / 2 + padding
+        var yOffset = bounds.extents.y + overlayH / 2 + padding
+        if bounds.extents.y < 0.1 {
+            yOffset += 0.3
+        }
         let zOffset: Float = 0.01  // small positive z to avoid z-fighting
         
         // 5. set the position relative to plantEntity

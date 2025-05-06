@@ -10,7 +10,7 @@ struct Plant: Identifiable {
     public var name: String
     public var plantSpecies: String
     public var status: PlantStatus
-    public var model: PlantEntity
+    public var entity: PlantEntity
     public var imageName: String
     public var overlaySize: (x: Double, y: Double)
 }

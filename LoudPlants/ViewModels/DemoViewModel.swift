@@ -12,6 +12,7 @@ import Combine
 
 class DemoViewModel: ObservableObject {
     @Published var plantEntities: [PlantEntity]
+    @Published var plants: [Plant]
     let plantStore: PlantStore
     let overlayPresenter: OverlayPresenter
     let arSession = ARSessionManager.shared
@@ -22,20 +23,20 @@ class DemoViewModel: ObservableObject {
         let plantEntities: [PlantEntity] = [
             PlantEntity(
                 id: "1",
-                modelName: "Flytrap with Green Dot",
+                modelName: "Flytrap",
                 thumbnailName: "flytrap"
             ),
             PlantEntity(
                 id: "2",
-                modelName: "Flytrap",
-                thumbnailName: "flytrap",
-                greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.1)
+                modelName: "Sad Plant",
+                thumbnailName: "flytrap_crying",
+                greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.3)
             ),
             PlantEntity(
                 id: "3",
-                modelName: "Succulent",
+                modelName: "Happy Plant",
                 thumbnailName: "succulent",
-                greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.1)
+                greenDot: GreenDot(offset: SIMD3<Float>(0.048, 0.296, -0.028), size: 0.3)
             )
         ]
         self.plantEntities = plantEntities
@@ -47,7 +48,7 @@ class DemoViewModel: ObservableObject {
                 name: "Fake Stark",
                 plantSpecies: "Venus Flytrap",
                 status: .sad,
-                model: plantEntities.first(where: { $0.id == "1" })!,
+                entity: plantEntities.first(where: { $0.id == "1" })!,
                 imageName: "flytrap",
                 overlaySize: (x: 0.9, y: 0.4)
             ),
@@ -56,7 +57,7 @@ class DemoViewModel: ObservableObject {
                 name: "Stark",
                 plantSpecies: "Venus Flytrap",
                 status: .crying,
-                model: plantEntities.first(where: { $0.id == "2" })!,
+                entity: plantEntities.first(where: { $0.id == "2" })!,
                 imageName: "flytrap",
                 overlaySize: (x: 0.9, y: 0.4)
             ),
@@ -64,14 +65,15 @@ class DemoViewModel: ObservableObject {
                 id: "3",
                 name: "Peter",
                 plantSpecies: "Succulents",
-                status: .normal,
-                model: plantEntities.first(where: { $0.id == "3" })!,
+                status: .happy,
+                entity: plantEntities.first(where: { $0.id == "3" })!,
                 imageName: "succulent",
                 overlaySize: (x: 0.9, y: 0.4)
             )
         ]
-
+        
         self.plantStore = PlantStore(initialPlants: plants)
+        self.plants = plants
 
         self.overlayPresenter = OverlayPresenter(arSession: ARSessionManager.shared,
                                                  plantStore: plantStore)
