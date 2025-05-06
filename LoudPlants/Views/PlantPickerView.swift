@@ -9,9 +9,9 @@ import SwiftUI
 
 struct PlantPickerView: View {
     /// from upper, available plant models list
-    let plantModels: [PlantModel]
+    let plantEntities: [PlantEntity]
     /// when the user select a model
-    let onSelect: (PlantModel) -> Void
+    let onSelect: (PlantEntity) -> Void
     
     private let columns = [
         GridItem(.flexible(), spacing: 16),
@@ -23,13 +23,14 @@ struct PlantPickerView: View {
 
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(plantModels) { model in
+
+                    ForEach(plantEntities) { model in
                         VStack(spacing: 8) {
                             Image(model.thumbnailName)
                                 .resizable()
                                 .aspectRatio(1, contentMode: .fit)
                                 .cornerRadius(8)
-                            Text(model.displayName)
+                            Text(model.modelName)
                                 .font(.caption)
                         }
                         .onTapGesture {
@@ -46,12 +47,11 @@ struct PlantPickerView: View {
 
 struct PlantPickerView_Previews: PreviewProvider {
     static let samples = [
-        PlantModel(id: "fern", displayName: "Fern", modelName: "String", thumbnailName: "fern_thumb"),
-        PlantModel(id: "succulent", displayName: "Succulent", modelName: "String", thumbnailName: "succ_thumb"),
+        PlantEntity(id: "succulent", modelName: "Succulent", thumbnailName: "succ_thumb"),
     ]
 
     static var previews: some View {
-        PlantPickerView(plantModels: samples) { model in
+        PlantPickerView(plantEntities: samples) { model in
             print("Selected:", model)
         }
     }

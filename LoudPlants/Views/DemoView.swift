@@ -88,8 +88,11 @@ struct DemoView: View {
             .sheet(
                 isPresented: $showPicker
             ) {
-                PlantPickerView(plantModels: viewModel.plantModels) { selected in
-                    viewModel.arSession.placeModel(selected)
+                PlantPickerView(plantEntities: viewModel.plantEntities) { selected in
+                    
+                    let plant = viewModel.plants.first(where: { $0.id == selected.id })!
+                    
+                    viewModel.arSession.placeModel(plant)
                     showPicker = false
                 }
                 .presentationDetents([.medium, .large])
