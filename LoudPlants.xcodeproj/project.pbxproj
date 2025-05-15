@@ -37,6 +37,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		80201AC92DD67FCD0032CC81 /* docs */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = docs;
+			sourceTree = "<group>";
+		};
 		80944B842DB6B1190090D9EE /* LoudPlants */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = LoudPlants;
@@ -82,6 +87,7 @@
 		80944B792DB6B1190090D9EE = {
 			isa = PBXGroup;
 			children = (
+				80201AC92DD67FCD0032CC81 /* docs */,
 				80944BDC2DB6D0AA0090D9EE /* .gitignore */,
 				80944BB02DB6B18C0090D9EE /* README.md */,
 				80944B842DB6B1190090D9EE /* LoudPlants */,
@@ -117,6 +123,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				80201AC92DD67FCD0032CC81 /* docs */,
 				80944B842DB6B1190090D9EE /* LoudPlants */,
 			);
 			name = LoudPlants;
